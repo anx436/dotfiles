@@ -1,0 +1,170 @@
+# Use powerline
+USE_POWERLINE="true"
+
+# Source manjaro-zsh-configuration
+if [[ -e /usr/share/zsh/manjaro-zsh-config ]]; then
+  source /usr/share/zsh/manjaro-zsh-config
+fi
+# Use manjaro zsh prompt
+if [[ -e /usr/share/zsh/manjaro-zsh-prompt ]]; then
+  source /usr/share/zsh/manjaro-zsh-prompt
+fi
+
+# export LC_TIME=en_GB.UTF-8
+# export LC_ALL=en_GB.UTF-8
+export LC_TIME=en_US.UTF-8
+export LC_ALL=en_US.UTF-8
+
+alias nn="nnn -H"
+alias n="nnn -H"
+alias rr="ranger"
+alias r="ranger"
+
+alias ls="ls -A --color=auto --hyperlink=auto"
+
+alias mv="mv -i"
+alias rm="rm -i"
+
+# line numbers on, case insensitive
+alias less="less -N -i"
+
+alias bat="bat --paging=always"
+
+alias h="history -43"
+alias hh="history 0"
+# alias hs="history 0 | awk '{\$1=\"\";print substr(\$0,2)}' | fzf"
+hs() {
+    history 0 |awk '{$1="";print substr($0,2)}' | fzf
+}
+alias hss="history 0 | fzf"
+
+# x11 clipboard
+# alias cv="xclip -o -sel clip"
+# alias xc="xclip -sel clip"
+# alias xv="xclip -o -sel clip"
+
+# wayland clipboard
+alias xc="wl-copy"
+alias xv="wl-paste"
+qv() {
+  qrencode "$(wl-paste)" -s 12 -o qr_code_temp.png;
+  sxiv qr_code_temp.png
+}
+
+alias vi='nvim'
+alias v='nvim'
+# alias s='sc-im' # terminal based excel-like
+export EDITOR=nvim
+export VISUAL=nvim
+export NNN_USE_EDITOR=1
+
+alias k="kitty"
+
+# alias mpvv="mpv --af=rubberband"
+# alias python='python3'
+
+# vim keybinds in shell
+bindkey -v
+
+# tab completion by default doesnt only works in one direction; this allows backwards tab completion
+# https://stackoverflow.com/questions/815686/unable-to-make-a-backward-tab-as-shift-tab-in-zsh
+bindkey '^[[Z' reverse-menu-complete
+
+#PATH
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+
+#if python downgrade is needed
+# eval "$(pyenv init --path)"
+# eval "$(pyenv init -)"
+
+# export PATH=$PATH:/home/anx/d/d/main/1mine/scripts  # outdated
+export PATH=$PATH:/home/anx/d/d/scripts
+export PATH="$PATH:$HOME/.cargo/bin"
+export PATH="$PATH:$HOME/go/bin"
+export PATH="$PATH:$HOME/.config/lf"
+
+export SCRIPT_DIR="/home/anx/d/d/scripts"
+
+# outdated; use python
+# calc(){ awk "BEGIN { print $*}"; }
+
+ffile(){ find $1 -type f|fzf}
+fdir(){ find $1 -type d|fzf}
+bmarks() {cat /home/anx/d/d/nav | dmenu -l 10}
+cd1() {cd $(bmarks)}
+cd2() {cd $(xv)}
+
+# convert most common russian encoding to utf8
+cyrEnc() {iconv -f WINDOWS-1251 -t UTF-8 "$1"}
+
+# setxkbmap -option caps:escape 
+
+export TERMINAL=kitty
+# export GTK_USE_PORTAL=0
+#
+# export QT_QPA_PLATFORMTHEME="qt5ct"
+#
+# export QT_STYLE_OVERRIDE="qt5ct" 
+
+# export MANPAGER="nvim -c 'set ft=man' -"
+
+# fix for blue on green unreadable display for some directories
+eval "$(dircolors -b ~/.dircolors)"
+
+# export MANPAGER="bat -plman"
+
+# Function to stop recording any new commands to history
+stop_history() {
+    # zshaddhistory is the hook called before a command is added to history
+    # returning 1 tells zsh to skip it entirely
+    zshaddhistory() { return 1 }
+}
+
+# export PIPER_PATH=/home/anx/d/playground/tts-project-piper-only/.venv/bin/piper
+# export PIPER_MODEL=/home/anx/d/playground/tts-project-piper-only/en_US-amy-medium.onnx
+
+# open current command prompt in editor
+autoload edit-command-line; zle -N edit-command-line
+bindkey -M vicmd 'm' edit-command-line
+
+[ -f /opt/miniconda3/etc/profile.d/conda.sh ] && source /opt/miniconda3/etc/profile.d/conda.sh
+
+if [[ -n $QUICK_CMD ]]; then
+    # 1. Clear any existing prompt hooks that Manjaro/Powerline might have set
+    # This stops them from trying to draw fancy colors/segments
+    unset RPOMPT
+    
+    # 2. Force the prompt to be simple inside the hook
+    # This runs right before the cursor appears, overwriting Manjaro's logic
+    setup_quick_prompt() {
+        PROMPT="> "
+        RPROMPT=""
+    }
+
+    # 3. Add our setup to the precmd hooks
+    autoload -Uz add-zsh-hook
+    add-zsh-hook precmd setup_quick_prompt
+
+    # 4. Logic to exit after a command is run
+    preexec() {
+        _CMD_RAN=1
+    }
+
+    # Update the precmd to handle both the exit logic AND the prompt
+    precmd() {
+        # Only exit if the last command was successful (exit code 0)
+        if [[ -n $_CMD_RAN && $? -eq 0 ]]; then
+            exit
+        elif [[ -n $_CMD_RAN ]]; then
+            echo "Command failed! Press Enter to close or try again."
+            _CMD_RAN="" # Reset so it doesn't loop exit
+        else
+            setup_quick_prompt
+        fi
+    }
+    
+    # 5. Optional: Disable the vim mode indicator for this tiny window
+    # Since you have 'bindkey -v', Manjaro might try to show [INS] or [NOR]
+    MODE_INDICATOR="" 
+fi

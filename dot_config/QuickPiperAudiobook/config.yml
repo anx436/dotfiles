@@ -1,0 +1,4 @@
+output: ~/d/downloads/audiobooks
+model: "en_US-amy-medium.onnx"
+threads: 4
+verbose: true

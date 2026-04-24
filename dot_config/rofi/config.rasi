@@ -1,0 +1,28 @@
+configuration {
+    /* 1. Unbind the conflicts first */
+    kb-remove-to-sol: "";
+    kb-remove-char-forward: "";
+
+    /* 2. Assign the scrolling actions */
+    kb-page-prev: "Control+u";
+    kb-page-next: "Control+d";
+}
+
+// element {
+//     /* Increase the first value (top/bottom padding) */
+//     padding: 20px 20px; 
+// }
+
+element-text {
+    /* 1. Force the text to stay on the left regardless of script */
+    horizontal-align: 0;
+    
+    /* 2. Center the text vertically so descenders don't hit the floor */
+    vertical-align: 0.5;
+    
+    /* 3. force a massive line height */
+    line-height: 2.5; 
+    
+    /* 4. Ensure no weird clipping is happening at the container level */
+    padding: 10px 0px;
+}

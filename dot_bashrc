@@ -1,0 +1,19 @@
+export EDITOR=vim
+export VISUAL=vim
+export NNN_USE_EDITOR=1
+
+setxkbmap -option caps:escape 
+
+alias h="history -43"
+alias hh="history 0"
+hs() {
+    history 0 |awk '{$1="";print substr($0,2)}' | fzf
+}
+alias hss="history 0 | fzf"
+
+alias cv="xclip -o -sel clip"
+alias xv="xclip -o -sel clip"
+alias xc="xclip -sel clip"
+alias doge='sxiv -f ~/Downloads/425620ef7fe625e6054d5e3011b837dd.jpg'
+
+export TERMINAL=kitty

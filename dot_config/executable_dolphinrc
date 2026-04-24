@@ -1,0 +1,60 @@
+MenuBar=Disabled
+
+[$Version]
+update_info=dolphin_detailsmodesettings.upd:rename-leading-padding,dolphin_detailsmodesettings.upd:move-content-display
+
+[CompactMode]
+PreviewSize=16
+UseSystemFont=false
+ViewFont=padmaa,9,-1,5,500,0,0,0,0,0,0,0,0,0,0,1,regular
+
+[ContentDisplay]
+UsePermissionsFormat=CombinedFormat
+UseShortRelativeDates=false
+
+[DetailsMode]
+PreviewSize=64
+UseSystemFont=false
+ViewFont=padmaa,9,-1,5,500,0,0,0,0,0,0,0,0,0,0,1,regular
+
+[ExtractDialog]
+1920x1080 screen: Height=1030
+1920x1080 screen: Width=476
+
+[General]
+BrowseThroughArchives=true
+EditableUrl=true
+FilterBar=true
+OpenExternallyCalledFolderInNewTab=true
+OpenNewTabAfterLastTab=true
+ShowFullPath=true
+SplitView=true
+UseTabForSwitchingSplitView=true
+Version=202
+ViewPropsTimestamp=2023,4,26,23,56,43.351
+
+[IconsMode]
+PreviewSize=16
+UseSystemFont=false
+ViewFont=padmaa,9,-1,5,500,0,0,0,0,0,0,0,0,0,0,1,regular
+
+[InformationPanel]
+dateFormat=ShortFormat
+
+[KFileDialog Settings]
+Places Icons Auto-resize=false
+Places Icons Static Size=22
+
+[KPropertiesDialog]
+1920x1080 screen: Height=588
+1920x1080 screen: Width=479
+
+[MainWindow]
+MenuBar=Disabled
+
+[PreviewSettings]
+Plugins=appimagethumbnail,audiothumbnail,blenderthumbnail,comicbookthumbnail,cursorthumbnail,djvuthumbnail,ebookthumbnail,exrthumbnail,directorythumbnail,imagethumbnail,jpegthumbnail,kraorathumbnail,windowsexethumbnail,windowsimagethumbnail,mobithumbnail,opendocumentthumbnail,gsthumbnail,rawthumbnail,svgthumbnail,textthumbnail,ffmpegthumbs
+
+[ViewPropertiesDialog]
+1920x1080 screen: Height=650
+1920x1080 screen: Width=498
