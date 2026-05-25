@@ -30,3 +30,4 @@ function cd1 {
 }
 
 $env:PATH += ";D:\d\scripts\"
+$env:PAGER = "less"

@@ -293,7 +293,8 @@ set ttyfast                " Faster redrawing.
 " colorscheme moonfly
 " colo habamax
 " colo hydrangea
-colo luinnar
+" colo luinnar
+colo iceberg
 
 set termguicolors
 set visualbell
