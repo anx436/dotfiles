@@ -1,4 +1,6 @@
 .config\wezterm\wezterm.lua
 AppData\Local\nvim\init.vim
+AppData\Roaming\mpv\input.conf
+AppData\Roaming\mpv\mpv.conf
 Documents\PowerShell\Microsoft.PowerShell_profile.ps1
 dots-win.txt

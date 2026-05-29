@@ -9,7 +9,6 @@
 .config/dolphinrc
 .config/dunst/dunstrc
 .config/fish/config.fish
-.config/i3/config
 .config/kitty/kitty.conf
 .config/lf/cleaner
 .config/lf/lfrc
@@ -17,8 +16,6 @@
 .config/lf/vidthumb
 .config/mpv/input.conf
 .config/mpv/mpv.conf
-.config/mpv_from_wind/input.conf
-.config/mpv_from_wind/mpv.conf
 .config/nvim/init.vim
 .config/pistol/pistol.conf
 .config/polybar/config.ini
